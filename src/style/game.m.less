@@ -1,0 +1,51 @@
+.game {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .header {
+        height: 50px;
+        width: 100%;
+        background-color: red;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        .button{
+            margin-right: 40px;
+            font-size: 1.2rem;
+        }
+    }
+
+    .content {
+        width: 100%;
+        padding: 30px;
+        box-sizing: border-box;
+        overflow: auto;
+        max-width: 700px;
+
+        .canvas {
+            max-height: 500px;
+        }
+
+        .explain {
+            h1 {
+                color: red
+            }
+
+            .text {
+
+                word-break: normal;
+                white-space: pre-warp;
+                word-wrap: break-word;
+            }
+        }
+    }
+
+    .footer {
+        width: 100%;
+    }
+}
