@@ -1,7 +1,7 @@
+use crate::graph::point::Point;
 use std::collections::hash_map::DefaultHasher;
 use std::hash::{Hash, Hasher};
-use crate::graph::point::Point;
-
+#[derive(Debug,Clone)]
 pub struct Line(pub Point, pub Point);
 
 impl Hash for Line {
@@ -13,6 +13,14 @@ impl Hash for Line {
         if p1t.x > p2t.x {
             p1 = p1t;
             p2 = p2t;
+        } else if (p1t.x == p2t.x) {
+            if p1t.y > p2t.y {
+                p1 = p1t;
+                p2 = p2t;
+            } else {
+                p1 = p2t;
+                p2 = p1t;
+            }
         } else {
             p1 = p2t;
             p2 = p1t;
@@ -27,14 +35,13 @@ impl PartialEq for Line {
     fn eq(&self, other: &Self) -> bool {
         let mut s1 = DefaultHasher::new();
         self.hash(&mut s1);
-        let h1=s1.finish();
-
+        let h1 = s1.finish();
 
         let mut s2 = DefaultHasher::new();
         other.hash(&mut s2);
-        let h2=s2.finish();
+        let h2 = s2.finish();
 
-        h1==h2
+        h1 == h2
     }
 }
 impl Eq for Line {}
